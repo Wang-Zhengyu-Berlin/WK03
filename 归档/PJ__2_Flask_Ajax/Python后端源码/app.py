@@ -55,7 +55,7 @@ def user_register():
         cursor.execute(sql, [NAME, PSWORD])
         # cursor.execute(sql,(user,pwd))
         conn.commit()
-        sql__US_NAME_has_IN = 'select * from Users where US_NAME = "%s"' % (NAME)
+        sql__US_NAME_has_IN = 'select * from Users where NAME = "%s"' % (NAME)
         res_sql__US_NAME_has_IN = cursor.execute(sql__US_NAME_has_IN)
         if(res_sql__US_NAME_has_IN == 1):
             have_add = 1
@@ -77,7 +77,7 @@ def user_register():
 @app.route('/add_scores',methods=['POST','GET'])
 def add_scores():
     NAME = str(request.args.get('NAME'))
-    sql_select_US_NAME = 'select * from Scores where US_NAME = "%s"' % (NAME)
+    sql_select_US_NAME = 'select * from Scores where NAME = "%s"' % (NAME)
     cursor.execute(sql_select_US_NAME)
     res = cursor.fetchone()
     print(res)
